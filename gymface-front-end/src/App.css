@@ -1,0 +1,54 @@
+.body{
+  font-family: 'Raleway', sans-serif;
+  color: white
+}
+
+#app {
+  margin-top: 50px;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-family: 'Raleway', sans-serif !important;
+  color: white
+}
+
+#header, .page {
+  width: 100%;
+}
+
+#classLoad {
+  margin-top: 200px;
+}
+
+.calendarItem {
+  justify-content: space-between !important;
+  max-width: 80% !important;
+}
+
+.welcome-message{
+  font-family: 'Raleway', sans-serif;
+}
+
+.myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.dashboard-cal{
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+.button{
+  background-color: rgba(26,24,45,1);
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px;
+  margin: 10px
+}
