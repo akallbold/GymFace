@@ -23,13 +23,18 @@ class Klass < ApplicationRecord
 
     klasses = page.css('.search-result-row .class-info')
     klasses.each do |klass|
+      # byebug
       name = klass.css('h2').text.strip #class name
-
-      time = klass.css('.icon-time').text.strip.split(" - ")
-      start = date + " " + time.first
-      ending = date + " " + time.last
-
+      # time = klass.css('.icon-time').text.strip.split(" - ")
+      # start = date + " " + time.first
+      start = date + " " + "09:45 AM"
+      # start = "09:45 AM"
+      # ending = date + " " + time.last
+      ending = date + " " + "10:30 AM"
+      # ending = "10:30 AM"
+      # byebug
       trainer = klass.css('.icon-trainer').text.strip #trainer
+      # trainer = "Mary O"
 
       Klass.find_or_create_by(name: name, instructor: trainer, start_time: start, end_time: ending, location_id: location_id)
     end
