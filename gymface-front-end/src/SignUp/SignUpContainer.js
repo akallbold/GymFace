@@ -37,6 +37,9 @@ class SignUpContainer extends Component {
       if (err) {
        alert('Try again!')
       } else {
+        console.log("this should be some representation of my face", data.FaceRecords[0].Face.FaceId)
+        console.log("preview", this.state.capturedPreview)
+
        this.setState({
          capturedFaceId: data.FaceRecords[0].Face.FaceId
        })

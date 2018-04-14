@@ -12,10 +12,12 @@ class Classes extends Component {
   }
 
   componentDidMount(){
-    this.fetchClasses()
+    console.log("date", this.state.viewDate)
+    this.fetchClasses(this.state.viewDate)
   }
 
   strfDate(){
+    console.log("date", this.state.viewDate)
     let date = this.state.viewDate
     let paddedMonth = date.getMonth() + 1
     paddedMonth = paddedMonth < 10 ? "0" + paddedMonth : paddedMonth
@@ -26,6 +28,8 @@ class Classes extends Component {
   fetchClasses = (date) => {
     fetch(`http://localhost:3001/klasses?date=${date}`)
     .then(res => res.json()).then(classes => {
+      console.log("classes", classes)
+      // console.log("err", error)
       this.setState({classes: classes})
       date ? this.setState({viewDate: new Date(date).toString().slice(0, 15)}) : null
     })

@@ -23,6 +23,16 @@ class LoginContainer extends Component {
        MaxFaces: 5
      };
 
+      //  let createCollectionParams = {
+      //    CollectionId: "gymface"
+      //  };
+      //
+      // rekognition.createCollection(createCollectionParams, function(err, data) {
+      //   console.log("create collection error", err)
+      //   if (err) console.log(err, err.stack); // an error occurred
+      //   else     console.log(data);           // successful response
+      // });
+
      rekognition.searchFacesByImage(params, (err, data) => {
         if (err) {
           alert("Make sure your face is in the photo!")
@@ -35,7 +45,7 @@ class LoginContainer extends Component {
             body: JSON.stringify({face_info: data})
           }).then(res => res.json()).then(json => {
             console.log(json, buffer)
-            alert(`Welcome, ${json.name}`)
+            alert(`Welcome`)
             this.props.setUser(json)
           })
         }
