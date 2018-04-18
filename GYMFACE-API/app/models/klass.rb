@@ -12,7 +12,7 @@ class Klass < ApplicationRecord
 
     browser = Watir::Browser.new(:chrome)
     browser.goto(url)
-    sleep 0.7
+    sleep 1.5
     page = Nokogiri::HTML(browser.html)
     # .search-result-row is the class of every item
     # .search-result-row.class-info provides the class info
@@ -23,19 +23,11 @@ class Klass < ApplicationRecord
 
     klasses = page.css('.search-result-row .class-info')
     klasses.each do |klass|
-      # byebug
       name = klass.css('h2').text.strip #class name
-      # time = klass.css('.icon-time').text.strip.split(" - ")
-      # start = date + " " + time.first
-      start = date + " " + "09:45 AM"
-      # start = "09:45 AM"
-      # ending = date + " " + time.last
-      ending = date + " " + "10:30 AM"
-      # ending = "10:30 AM"
-      # byebug
-      trainer = klass.css('.icon-trainer').text.strip #trainer
-      # trainer = "Mary O"
-
+      time = klass.css('.padding.text-uppercase.class-time').text.strip.split(" - ")
+      start = date + " " + time.first
+      ending = date + " " + time.last
+      trainer = klass.css('.class-instructor').text.strip #trainer
       Klass.find_or_create_by(name: name, instructor: trainer, start_time: start, end_time: ending, location_id: location_id)
     end
 

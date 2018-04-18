@@ -4,6 +4,7 @@ import { Menu } from 'semantic-ui-react'
 
 const Header = (props) => (
   <div id="header">
+  	<h1>Gymface</h1>
     <Menu inverted>
       <Link to="/"><Menu.Item content="Dashboard"/></Link>
       <Link to="/classes"><Menu.Item content="View Classes"/></Link>

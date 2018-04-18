@@ -73,11 +73,13 @@ class Account extends Component {
         <button onClick={this.capture}>Capture photo</button>
         <button onClick={this.handleEditInfo}>Edit Profile</button></Grid.Row>
 
-        <Grid.Row><Webcam
-        audio={false}
-        ref={this.setRef}
-        screenshotFormat="image/jpeg"/>
-        <img src={this.state.capturedImage} alt="snapshot results"/></Grid.Row>
+        <Grid.Row>
+          <Webcam
+          audio={false}
+          ref={this.setRef}
+          screenshotFormat="image/jpeg"/>
+          {this.state.capturedImage ? <img src={this.state.capturedImage} alt="snapshot results"/> : null}
+        </Grid.Row>
       </Grid>
     );
   }

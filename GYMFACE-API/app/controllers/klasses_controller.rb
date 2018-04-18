@@ -2,6 +2,7 @@ class KlassesController < ApplicationController
 
   def index
     if params[:date] != "undefined"
+      console.log('hi')
       Klass.fetchKlasses(params[:date])
       @klasses = Klass.class_by_date(params[:date])
       render json: @klasses, status: 200

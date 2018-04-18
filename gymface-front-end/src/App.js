@@ -40,10 +40,11 @@ class App extends Component {
             <Grid.Row>
               <div className="page">
                 <Switch>
-                  <Route exact path="/login" render={()=> <LoginContainer setUser={this.setUser}
+                  <Route exact path='/login' render={() => <LoginContainer setUser={this.setUser}
                   currentUser={this.state.currentUser}/>} />
-                  {this.state.currentUser ? null :
-                  <Route exact path="/signup" render={()=> <SignUpContainer setUser={this.setUser} currentUser={this.state.currentUser}/>} />}
+
+                  <Route exact path="/signup" render={routerProps => <SignUpContainer {...routerProps} setUser={this.setUser} currentUser={this.state.currentUser}/>} />
+                  
                   {this.state.currentUser ?
                     <React.Fragment>
                     <Route exact path="/" render={() => <Dashboard currentUser={this.state.currentUser}/>} />

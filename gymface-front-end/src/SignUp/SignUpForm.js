@@ -5,7 +5,8 @@ const SignUpForm = (props) => (
   <form onSubmit={props.submit}>
     <input type="text" className="button" name="name"placeholder="Name" /><br/>
     <input type="text" className="button" name="email" placeholder="Email" /><br/>
-    <select name="club" className="button" placeholder="Pick your club location...">
+    <select name="club" className="button">
+      <option value="">Select your club location:</option>
       {Object.keys(CLUBS).map(id => <option value={id} key={id}>{CLUBS[id]}</option>)}
     </select><br/>
     <input type="text" className="button" name="username"placeholder="Username" /><br/>
