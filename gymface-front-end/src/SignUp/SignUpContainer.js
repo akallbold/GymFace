@@ -26,7 +26,6 @@ class SignUpContainer extends Component {
     let club = event.target.club.value
     let username = event.target.username.value
     let password = event.target.password.value
-
     let params = {
       CollectionId: "gymface",
       Image: {
@@ -34,9 +33,25 @@ class SignUpContainer extends Component {
       }
     };
 
+  //   let indexFaceResponse = rekognition.indexFaces(params)
+  //     setResponse = (faceData) => {
+  //       this.setState({
+  //         capturedFaceId: faceData.FaceRecords[0].Face.FaceId
+  //       })
+  //     }
+  //     this.setResponse(indexFaceResponse)
+  //     // if (err) {
+  //     //  alert('Try again!')
+  //     // } else {
+  //
+  //     // }
+  // //   }
+  // // )
+
     rekognition.indexFaces(params, (err, data) => {
       if (err) {
-       alert('Try again!')
+       // alert('Try again!')
+       alert(err)
       } else {
        this.setState({
          capturedFaceId: data.FaceRecords[0].Face.FaceId
@@ -44,9 +59,10 @@ class SignUpContainer extends Component {
       }
     })
 
-    if (this.state.capturedFaceId === null){
-      return alert("Take a photo to complete the form.")
-    }
+    // if (this.state.capturedFaceId === null){
+    //     debugger
+    //   return alert("Take a photo to complete the form.")
+    // }
 
     fetch('http://localhost:3001/users', {
       method: 'POST',
@@ -63,6 +79,7 @@ class SignUpContainer extends Component {
       })
     }).then(res => res.json()).then(json => {
       if (json.error){
+        console.log(json.error)
         alert("Your email or username is already in use. Try again.")
       } else {
         this.props.setUser(json)
@@ -71,12 +88,12 @@ class SignUpContainer extends Component {
   }
 
   capturePreview = (buffer, base64) => {
-    console.log("hi")
     this.setState({capturedPreview: base64, storedBuffer: buffer})
+    // debugger
   }
 
   render() {
-    console.log(this.props.currentUser)
+    // console.log(this.props.currentUser)
     return (
       <Grid centered columns={2} className="page">
         { this.props.currentUser ?

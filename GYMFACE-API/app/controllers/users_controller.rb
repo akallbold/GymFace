@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     if params[:face_info]
       faces = params[:face_info][:FaceMatches]
       result = User.find_by(face_id: faces[0][:Face][:FaceId])
+      byebug
       render json: result, status: 200
     else
       user = User.find_by(username: login_params[:username])

@@ -23,19 +23,34 @@ class LoginContainer extends Component {
        MaxFaces: 5
      };
 
+
+  let createCollectionParams = {
+    CollectionId: "gymface"
+  };
+  // debugger
+
+  rekognition.createCollection(createCollectionParams, function(err, data) {
+    console.log("create collection error", err)
+    if (err) console.log(err, err.stack); // an error occurred
+    else     console.log(data);           // successful response
+  });
+
+
      rekognition.searchFacesByImage(params, (err, data) => {
         if (err) {
-          alert("Make sure your face is in the photo!")
+          alert(err)
         } else if (data["FaceMatches"].length === 0){
           alert("No user found. Try again.")
         } else {
+          console.log(data["FaceMatches"])
+          //the app is breaking on my internal api to the user files
           fetch('http://localhost:3001/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({face_info: data})
           }).then(res => res.json()).then(json => {
             console.log(json, buffer)
-            alert(`Welcome, ${json.name}`)
+            if (json.name) alert(`Welcome, ${json.name}`)
             this.props.setUser(json)
           })
         }

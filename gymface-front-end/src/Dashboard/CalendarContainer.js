@@ -51,7 +51,7 @@ class CalendarContainer extends React.Component {
     console.log(this.state.user)
     return (
       <div className="dashboard-cal page">
-        <h1 className="w3-animate-opacity">Welcome Meatbag!</h1>
+        <h1 className="w3-animate-opacity">Welcome!</h1>
         <Grid centered columns={5} className="dash-cal-adjust-main">
           <Grid.Row>
             <h1>Heres is a list of your classes below!</h1>
